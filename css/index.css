@@ -286,3 +286,77 @@ font-weight: 700;
 
   text-align: center;
 }
+
+ 
+/* start   about */
+/* start   about */
+/* start   about */
+
+.about{
+margin: auto;
+background-color: #fff;
+text-align: center;
+margin-bottom: 200px;
+ padding-bottom: 50px;
+
+}
+.about h1{
+
+
+  font-size: 50px;
+  font-weight: 900;
+  color: #d83200;
+}
+
+.about .container{
+
+display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+
+    gap: 5px;
+
+}
+
+.about .container .textAabout{
+
+  font-size: 22px;
+font-weight: 900;
+direction: rtl;
+display: flex;
+align-items: center;
+justify-content: start;
+ line-height: 2;
+ text-align: start;
+
+}
+ 
+.about .container .log  img{
+
+width: 100%;
+
+}
+
+ @media (max-width: 500px) {
+.about .container{
+
+display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 5px;
+
+}
+
+.about .container .textAabout{
+
+  font-size: 14px;
+font-weight: 700;
+
+}.about .container .log  img{
+
+width: 0%;
+
+}
+
+}
