@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/nornalize.css" />
+
+    <title> ليالي العرب </title>
+  </head>
+  <body>
+    <!--start header-->
+    <!--start header-->
+    <!--start header-->
+    <div class="header">
+      <div class="container">
+        <div class="logo"><img src="image/logo.jpg" alt="" /></div>
+        <div class="name">
+          <h1><span> ليالي</span> العرب  </h1>
+        </div>
+      </div>
+    </div>
+    <!--start  profile-->
+    <!--start  profile-->
+    <!--start  profile-->
+    <div class="profile">
+      <div class="container">
+        <div class="image"><img src="image/caram.jpg" alt="" /></div>
+        <div class="text">
+          <span>مطعم ليالي العرب  </span>
+          <p>  طعم رهيب بسعر خطير 🔥</p>
+        </div>
+        <div class="icon">
+          <a href="https://www.tiktok.com/@layaliarab?_t=ZS-8v9fAPbIM0S&_r=1"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+
+            <a href="https://www.youtube.com/@layalliaarab"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+
+          <a href="https://www.facebook.com/Lialyelarab?rdid=E25f52WOV8HvI8q7&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EyUhGLj5P%2F#"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+
+          <a
+            href="https://www.instagram.com/layalliaarab6/?igsh=MTE0dG56bXJoZnc5ZQ#"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+
+          <a href="tel:201102202068"><i class="fa-solid fa-phone"></i></a>
+
+          <a href="https://api.whatsapp.com/send?phone=201102202068"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!--start   contant-->
+    <!--start   contant-->
+    <!--start   contant-->
+    <div class="contant">
+      <div class="container">
+        <!-- <br /> -->
+        <div class="col">
+          <a href="https://www.google.com/maps/place/%D9%85%D8%B7%D8%B9%D9%85+%D9%84%D9%8A%D8%A7%D9%84%D9%8A+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D8%8C+2%D8%B4%D8%A7%D8%B1%D8%B9+%D8%A7%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF+%D8%A7%D9%84%D9%81%D8%AA%D8%A7%D8%AD+%D8%A7%D9%84%D9%85%D9%84%D9%83+%D9%81%D9%8A%D8%B5%D9%84+%D8%A7%D9%85%D8%A7%D9%85%D8%8C+%D9%81%D9%8A%D8%B5%D9%84%D8%8C%D8%8C+12987%E2%80%AD/data=!4m2!3m1!1s0x1458479e819fe7a1:0x4afa6f7abca7c49f?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI1LjEyLjEYACCIJypjLDk0MjIzMjk5LDk0MjE2NDEzLDk0MjEyNDk2LDk0MjA3Mzk0LDk0MjA3NTA2LDk0MjA4NTA2LDk0MjE3NTIzLDk0MjE4NjUzLDk0MjI5ODM5LDQ3MDg0MzkzLDk0MjEzMjAwQgJFRw%3D%3D&skid=15fbb103-09ea-41e4-8f93-1b2e7e42498e">
+            <pre><i class="fa-solid fa-location-dot"></i>          location          <span>>>></span></pre>
+          </a>
+        </div>
+        <br />
+        <div class="col">
+          <a href="menu/menu.html">
+            <pre><i class="fa-solid fa-bars"></i>            meunu          <span>>>></span></pre>
+          </a>
+        </div>
+            <br />
+
+             <!-- <div class="col">
+          <a href="offers/offers.html">
+            <pre> </i>             offers          <span>>>></span></pre>
+          </a>
+
+
+        </div>
+      -->
+      </div>
+    </div>
+
+    <div class="about">
+
+      <h1>   About us </h1>
+      <div class="container">
+
+      <div class="log">
+        <img src="image/logo.jpg" alt="">
+      </div>
+      <div class="textAabout">
+     <p>
+ تأسس المطعم عام 2022 ليقدم اشهى المأكولات اليمنية في مصر - القاهرة.
+<br>
+!مرحبًا بكم في مطعم ليالي العرب، حيث الأصالة اليمنية والكرم الخليجي يجتمعان على مائد
+<br>
+نحن نفخر بتقديم أشهى المأكولات التقليدية التي تحكي قصصًا من عبق التاريخ وثرائنا الثقافي. في مطعم ليالي العرب، كل طبق هو رحلة إلى قلب المذاقات الأصيلة التي توارثناها جيلًا بعد جي
+<br>
+بدأنا سعيًا لتقديم تجربة طعام فريدة، تأخذكم في جولة لا تُنسى بين نكهات اليمن الساحرة. من المندي الشهي، والمظبي الأصيل، والمدفون الغني، إلى أطباقنا الخاصة مثل صينية ليالي العرب، الحنيذ، والمشاوي المتنوعة، نعدكم بتجربة ترضي جميع الأذواق.
+<br>
+نحرص في مطعم ليالي العرب على استخدام أجود المكونات الطازجة، ونعتمد على أمهر الطهاة لتقديم أطباق مطهوة بعناية وشغف. سواء كنتم تبحثون عن عشاء عائلي دافئ، أو وليمة احتفالية، أو مجرد تذوق النكهات الأصيلة، فإن ليالي العرب هو وجهتكم الأمثل.
+<br>
+انضموا إلينا لتجربة لا مثيل لها، حيث الطعم الأصيل يلتقي بالضيافة العربية الأصيلة.
+</p>
+
+      </div>
+     </div></div>
+  </body>
+</html>

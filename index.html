@@ -76,20 +76,20 @@
           </a>
         </div>
             <br />
-       
+
              <!-- <div class="col">
           <a href="offers/offers.html">
             <pre> </i>             offers          <span>>>></span></pre>
           </a>
 
-        
+
         </div>
       -->
       </div>
     </div>
 
     <div class="about">
-      
+
       <h1>   About us </h1>
       <div class="container">
 
@@ -97,7 +97,7 @@
         <img src="image/logo.jpg" alt="">
       </div>
       <div class="textAabout">
-     <p> 
+     <p>
  تأسس المطعم عام 2022 ليقدم اشهى المأكولات اليمنية في مصر - القاهرة.
 <br>
 !مرحبًا بكم في مطعم ليالي العرب، حيث الأصالة اليمنية والكرم الخليجي يجتمعان على مائد
@@ -109,7 +109,515 @@
 نحرص في مطعم ليالي العرب على استخدام أجود المكونات الطازجة، ونعتمد على أمهر الطهاة لتقديم أطباق مطهوة بعناية وشغف. سواء كنتم تبحثون عن عشاء عائلي دافئ، أو وليمة احتفالية، أو مجرد تذوق النكهات الأصيلة، فإن ليالي العرب هو وجهتكم الأمثل.
 <br>
 انضموا إلينا لتجربة لا مثيل لها، حيث الطعم الأصيل يلتقي بالضيافة العربية الأصيلة.
-</p>
+</p><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ليالي العرب - عيد مبارك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/all.min.css" />
+
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #F5D878;
+      --green: #1B6B3A;
+      --green-dark: #0D3D20;
+      --green-light: #2A8C4F;
+      --red: #d83200;
+      --white: #ffffff;
+      --cream: #FEFAEF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      font-family: 'Tajawal', sans-serif;
+      overflow-x: hidden;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* TOP RIBBON */
+    .top-ribbon {
+      background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-dark));
+      color: var(--gold-light);
+      text-align: center;
+      font-family: 'Amiri', serif;
+      font-size: clamp(13px, 2vw, 18px);
+      padding: 10px;
+      letter-spacing: 3px;
+      border-bottom: 2px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .top-ribbon::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(245,216,120,0.15), transparent);
+      animation: sweep 3s linear infinite;
+    }
+    @keyframes sweep { to { left: 150%; } }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 50%, var(--green-dark) 100%);
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V16L28 0L56 16V50Z' fill='none' stroke='%23C9A84C' stroke-opacity='0.08' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+    }
+    .header .container {
+      width: 90%; margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+    }
+    .header img {
+      width: 85px; height: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .header .name { text-align: center; flex: 1; padding: 0 20px; }
+    .header .name h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(28px, 5vw, 56px);
+      color: var(--gold-light);
+      line-height: 1.1;
+      text-shadow: 0 2px 20px rgba(201,168,76,0.4);
+    }
+    .header .name h1 span { color: var(--white); }
+    .header .name .tagline {
+      color: rgba(255,255,255,0.6);
+      font-size: clamp(12px, 1.5vw, 16px);
+      margin-top: 4px;
+      letter-spacing: 2px;
+    }
+
+    /* EID BANNER */
+    .eid-banner {
+      background: linear-gradient(135deg, var(--red) 0%, #a01c00 100%);
+      text-align: center;
+      padding: 24px 20px;
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .eid-banner::before, .eid-banner::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 160px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .eid-banner::before { left: 20px; }
+    .eid-banner::after { right: 20px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .eid-banner h2 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(28px, 5vw, 54px);
+      color: var(--gold-light);
+      letter-spacing: 4px;
+      animation: eidPulse 2.5s ease-in-out infinite;
+    }
+    .eid-banner p {
+      color: rgba(255,255,255,0.75);
+      font-size: clamp(13px, 2vw, 18px);
+      margin-top: 6px;
+      font-family: 'Amiri', serif;
+    }
+    @keyframes eidPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    .starburst {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 22px;
+      animation: spin8 8s linear infinite;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin8 { to { transform: rotate(360deg); } }
+
+    /* PROFILE */
+    .profile {
+      background: var(--white);
+      text-align: center;
+      padding: 40px 20px 30px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .profile .image {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .profile .image .star-ring {
+      position: absolute;
+      inset: -14px;
+      animation: rotateStar 12s linear infinite;
+    }
+    @keyframes rotateStar { to { transform: rotate(360deg); } }
+    .profile .image img {
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    .profile .text span {
+      font-family: 'Amiri', serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      color: var(--green-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .profile .text p {
+      color: var(--red);
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .profile .icon {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .profile .icon a {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .profile .icon a:hover {
+      background: var(--green);
+      border-color: var(--green);
+      transform: translateY(-5px) scale(1.12);
+      box-shadow: 0 10px 24px rgba(27,107,58,0.35);
+    }
+    .profile .icon i { font-size: 20px; color: var(--green-dark); transition: color 0.3s; }
+    .profile .icon a:hover i { color: var(--white); }
+
+    /* ZIGZAG */
+    .zigzag {
+      height: 30px;
+      background:
+        linear-gradient(135deg, var(--gold) 25%, transparent 25%) -20px 0,
+        linear-gradient(225deg, var(--gold) 25%, transparent 25%) -20px 0,
+        linear-gradient(315deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(45deg,  var(--gold) 25%, transparent 25%);
+      background-size: 40px 30px;
+      background-color: var(--white);
+      opacity: 0.3;
+    }
+
+    /* BUTTONS */
+    .contant {
+      background: linear-gradient(180deg, var(--green-dark) 0%, var(--green) 100%);
+      padding: 50px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contant::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M50 5L53 30H80L58 46L66 72L50 57L34 72L42 46L20 30H47Z' fill='none' stroke='%23C9A84C' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 100px 100px;
+    }
+    .contant .container { width: 90%; max-width: 620px; margin: auto; position: relative; }
+    .contant .col { margin-bottom: 18px; }
+    .contant .col a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      height: 68px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-family: 'Amiri', serif;
+      font-size: clamp(18px, 3vw, 26px);
+      color: var(--green-dark);
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+    }
+    .contant .col a::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.25);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+    .contant .col a:hover::after { left: 120%; }
+    .contant .col a:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+    }
+    .contant .col a i { font-size: 22px; }
+
+    /* ABOUT */
+    .about {
+      background: var(--cream);
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle at top right, rgba(201,168,76,0.12), transparent 70%);
+    }
+    .about h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(34px, 6vw, 62px);
+      color: var(--green-dark);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .about h1 em { font-style: normal; color: var(--red); }
+    .about .sub {
+      text-align: center;
+      color: #8B6914;
+      font-family: 'Amiri', serif;
+      font-size: clamp(15px, 2vw, 20px);
+      margin-bottom: 44px;
+      letter-spacing: 3px;
+    }
+    .about .container {
+      width: 90%; max-width: 920px; margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about .log img {
+      width: 100%;
+      border-radius: 24px;
+      border: 3px solid var(--gold);
+      box-shadow: 12px 12px 0 var(--gold), 0 20px 50px rgba(0,0,0,0.1);
+    }
+    .about .textAabout p {
+      font-size: clamp(14px, 1.8vw, 17px);
+      font-weight: 500;
+      line-height: 2.3;
+      color: #333;
+      text-align: right;
+      border-right: 4px solid var(--gold);
+      padding-right: 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--green-dark);
+      border-top: 3px solid var(--gold);
+      text-align: center;
+      padding: 28px 20px;
+      color: var(--gold-light);
+      font-family: 'Amiri', serif;
+      font-size: clamp(16px, 2vw, 22px);
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .about .container { grid-template-columns: 1fr; }
+      .about .log { display: none; }
+      .eid-banner::before, .eid-banner::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div class="top-ribbon">
+  🌟&nbsp;&nbsp; كل عام وأنتم بخير &nbsp;&nbsp;🌟&nbsp;&nbsp; عيد مبارك سعيد &nbsp;&nbsp;🌟&nbsp;&nbsp; تقبل الله منا ومنكم &nbsp;&nbsp;🌟
+</div>
+
+<div class="header">
+  <div class="container">
+    <div class="logo"><img src="image/logo.jpg" alt="ليالي العرب" /></div>
+    <div class="name">
+      <h1><span>ليالي</span> العرب</h1>
+      <p class="tagline">أصالة اليمن على موائد مصر</p>
+    </div>
+    <div style="width:85px"></div>
+  </div>
+</div>
+
+<div class="eid-banner">
+  <h2>
+    <span class="starburst">✦</span>
+    عيد مبارك
+    <span class="starburst" style="animation-direction:reverse">✦</span>
+  </h2>
+  <p>من مطعم ليالي العرب — نهنئكم بمناسبة عيد الفطر المبارك</p>
+</div>
+
+<div class="profile">
+  <div class="image">
+    <svg class="star-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+      <path d="M100 4 L108 36 L138 20 L122 50 L154 58 L130 80 L150 106 L118 106 L114 140 L100 118 L86 140 L82 106 L50 106 L70 80 L46 58 L78 50 L62 20 L92 36 Z"
+        fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+    </svg>
+    <img src="image/caram.jpg" alt="" />
+  </div>
+  <div class="text">
+    <span>مطعم ليالي العرب</span>
+    <p>طعم رهيب بسعر خطير 🔥</p>
+  </div>
+  <div class="icon">
+    <a href="https://www.tiktok.com/@layaliarab?_t=ZS-8v9fAPbIM0S&_r=1"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/@layalliaarab"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.facebook.com/Lialyelarab"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/layalliaarab6/"><i class="fa-brands fa-instagram"></i></a>
+    <a href="tel:201102202068"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://api.whatsapp.com/send?phone=201102202068"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</div>
+
+<div class="zigzag"></div>
+
+<div class="contant">
+  <div class="container">
+    <div class="col">
+      <a href="https://www.google.com/maps/place/مطعم+ليالي+العرب">
+        <i class="fa-solid fa-location-dot"></i>
+        الموقع على الخريطة
+      </a>
+    </div>
+    <div class="col">
+      <a href="menu/menu.html">
+        <i class="fa-solid fa-utensils"></i>
+        قائمة الطعام
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <h1>من <em>نحن</em></h1>
+  <p class="sub">✦ &nbsp; تأسسنا عام 2022 &nbsp; ✦</p>
+  <div class="container">
+    <div class="log">
+      <img src="image/logo.jpg" alt="ليالي العرب" />
+    </div>
+    <div class="textAabout">
+      <p>
+        مرحبًا بكم في مطعم ليالي العرب، حيث الأصالة اليمنية والكرم الخليجي يجتمعان على مائدة واحدة!
+        <br><br>
+        نحن نفخر بتقديم أشهى المأكولات التقليدية — من المندي الشهي، والمظبي الأصيل، والمدفون الغني، إلى أطباقنا الخاصة مثل صينية ليالي العرب والحنيذ والمشاوي المتنوعة.
+        <br><br>
+        نحرص على استخدام أجود المكونات الطازجة، ونعتمد على أمهر الطهاة لتقديم أطباق مطهوة بعناية وشغف.
+        <br><br>
+        انضموا إلينا لتجربة لا مثيل لها، حيث الطعم الأصيل يلتقي بالضيافة العربية. 🌟
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  🌟 &nbsp; كل عام وأنتم بخير — مطعم ليالي العرب &nbsp; 🌟
+</div>
+
+<script>
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+const colors = ['#C9A84C','#F5D878','#1B6B3A','#d83200','#ffffff','#2A8C4F'];
+const pieces = Array.from({length: 130}, () => ({
+  x: Math.random() * window.innerWidth,
+  y: Math.random() * window.innerHeight - window.innerHeight,
+  w: Math.random() * 10 + 5,
+  h: Math.random() * 6 + 3,
+  color: colors[Math.floor(Math.random() * colors.length)],
+  rotation: Math.random() * 360,
+  speed: Math.random() * 2 + 1,
+  rotSpeed: (Math.random() - 0.5) * 4,
+  sway: Math.random() * 2 - 1,
+  swayFreq: Math.random() * 0.03 + 0.01,
+  alpha: 1,
+  tick: Math.random() * 100
+}));
+
+const startTime = Date.now();
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const elapsed = Date.now() - startTime;
+
+  pieces.forEach(p => {
+    p.tick++;
+    p.y += p.speed;
+    p.rotation += p.rotSpeed;
+    p.x += Math.sin(p.tick * p.swayFreq) * p.sway;
+    if (elapsed > 5000) p.alpha = Math.max(0, 1 - (elapsed - 5000) / 2000);
+
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+    ctx.rotate(p.rotation * Math.PI / 180);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+    ctx.restore();
+
+    if (p.y > canvas.height + 20) {
+      p.y = -20;
+      p.x = Math.random() * canvas.width;
+    }
+  });
+
+  if (elapsed < 7000) requestAnimationFrame(drawConfetti);
+  else ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+drawConfetti();
+</script>
+</body>
+</html>
 
       </div>
      </div></div>
