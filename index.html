@@ -1,509 +1,1139 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ليالي العرب - عيد مبارك</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/all.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ليالي العرب - عيد مبارك 🌙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+      :root {
+        --main-color: #d83200;
+        --secondary-color: #000000;
+        --gold: #ffd700;
+        --gold-dark: #c8a700;
+        --gold-light: #fff3a3;
+        --cream: #fff8e7;
+        --deep-red: #8b0000;
+        --green-eid: #1a6b2f;
+      }
 
-  <style>
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #F5D878;
-      --green: #1B6B3A;
-      --green-dark: #0D3D20;
-      --green-light: #2A8C4F;
-      --red: #d83200;
-      --white: #ffffff;
-      --cream: #FEFAEF;
-    }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      font-family: 'Tajawal', sans-serif;
-      overflow-x: hidden;
-    }
+      html { scroll-behavior: smooth; }
 
-    #confetti-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 999;
-    }
+      body {
+        background-color: var(--main-color);
+        font-family: 'Cairo', sans-serif;
+        overflow-x: hidden;
+      }
 
-    /* TOP RIBBON */
-    .top-ribbon {
-      background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-dark));
-      color: var(--gold-light);
-      text-align: center;
-      font-family: 'Amiri', serif;
-      font-size: clamp(13px, 2vw, 18px);
-      padding: 10px;
-      letter-spacing: 3px;
-      border-bottom: 2px solid var(--gold);
-      position: relative;
-      overflow: hidden;
-    }
-    .top-ribbon::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(245,216,120,0.15), transparent);
-      animation: sweep 3s linear infinite;
-    }
-    @keyframes sweep { to { left: 150%; } }
+      /* ===================== EID POPUP ===================== */
+      #eid-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeInPop 0.5s ease;
+      }
+      @keyframes fadeInPop { from { opacity:0; } to { opacity:1; } }
 
-    /* HEADER */
-    .header {
-      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 50%, var(--green-dark) 100%);
-      border-bottom: 3px solid var(--gold);
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V16L28 0L56 16V50Z' fill='none' stroke='%23C9A84C' stroke-opacity='0.08' stroke-width='1'/%3E%3C/svg%3E");
-      background-size: 56px 100px;
-    }
-    .header .container {
-      width: 90%; margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      position: relative;
-    }
-    .header img {
-      width: 85px; height: 85px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--gold);
-      box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 8px 30px rgba(0,0,0,0.3);
-    }
-    .header .name { text-align: center; flex: 1; padding: 0 20px; }
-    .header .name h1 {
-      font-family: 'Amiri', serif;
-      font-size: clamp(28px, 5vw, 56px);
-      color: var(--gold-light);
-      line-height: 1.1;
-      text-shadow: 0 2px 20px rgba(201,168,76,0.4);
-    }
-    .header .name h1 span { color: var(--white); }
-    .header .name .tagline {
-      color: rgba(255,255,255,0.6);
-      font-size: clamp(12px, 1.5vw, 16px);
-      margin-top: 4px;
-      letter-spacing: 2px;
-    }
+      .popup-box {
+        background: linear-gradient(145deg, #1a0a00, #3d1000, #1a0a00);
+        border: 3px solid var(--gold);
+        border-radius: 24px;
+        padding: 40px 50px;
+        text-align: center;
+        max-width: 480px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 0 60px rgba(255,215,0,0.4), 0 0 120px rgba(216,50,0,0.3);
+        animation: popScale 0.6s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      @keyframes popScale { from { transform: scale(0.5) rotate(-5deg); opacity:0; } to { transform: scale(1) rotate(0deg); opacity:1; } }
 
-    /* EID BANNER */
-    .eid-banner {
-      background: linear-gradient(135deg, var(--red) 0%, #a01c00 100%);
-      text-align: center;
-      padding: 24px 20px;
-      border-bottom: 3px solid var(--gold);
-      position: relative;
-      overflow: hidden;
-    }
-    .eid-banner::before, .eid-banner::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 160px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold));
-    }
-    .eid-banner::before { left: 20px; }
-    .eid-banner::after { right: 20px; background: linear-gradient(90deg, var(--gold), transparent); }
-    .eid-banner h2 {
-      font-family: 'Amiri', serif;
-      font-size: clamp(28px, 5vw, 54px);
-      color: var(--gold-light);
-      letter-spacing: 4px;
-      animation: eidPulse 2.5s ease-in-out infinite;
-    }
-    .eid-banner p {
-      color: rgba(255,255,255,0.75);
-      font-size: clamp(13px, 2vw, 18px);
-      margin-top: 6px;
-      font-family: 'Amiri', serif;
-    }
-    @keyframes eidPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-    .starburst {
-      display: inline-block;
-      color: var(--gold);
-      font-size: 22px;
-      animation: spin8 8s linear infinite;
-      margin: 0 10px;
-      vertical-align: middle;
-    }
-    @keyframes spin8 { to { transform: rotate(360deg); } }
+      .popup-box .moon-icon {
+        font-size: 60px;
+        animation: moonGlow 2s ease-in-out infinite alternate;
+        display: block;
+        margin-bottom: 10px;
+      }
+      @keyframes moonGlow {
+        from { text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold); transform: rotate(-10deg); }
+        to   { text-shadow: 0 0 30px var(--gold), 0 0 60px orange; transform: rotate(10deg); }
+      }
 
-    /* PROFILE */
-    .profile {
-      background: var(--white);
-      text-align: center;
-      padding: 40px 20px 30px;
-      border-bottom: 3px solid var(--gold);
-    }
-    .profile .image {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
-    .profile .image .star-ring {
-      position: absolute;
-      inset: -14px;
-      animation: rotateStar 12s linear infinite;
-    }
-    @keyframes rotateStar { to { transform: rotate(360deg); } }
-    .profile .image img {
-      width: 170px; height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--gold);
-      position: relative;
-      z-index: 1;
-      display: block;
-    }
-    .profile .text span {
-      font-family: 'Amiri', serif;
-      font-size: clamp(22px, 4vw, 34px);
-      font-weight: 700;
-      color: var(--green-dark);
-      display: block;
-      margin-bottom: 4px;
-    }
-    .profile .text p {
-      color: var(--red);
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .profile .icon {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .profile .icon a {
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--cream);
-      border: 2px solid var(--gold);
-      transition: all 0.3s;
-      text-decoration: none;
-    }
-    .profile .icon a:hover {
-      background: var(--green);
-      border-color: var(--green);
-      transform: translateY(-5px) scale(1.12);
-      box-shadow: 0 10px 24px rgba(27,107,58,0.35);
-    }
-    .profile .icon i { font-size: 20px; color: var(--green-dark); transition: color 0.3s; }
-    .profile .icon a:hover i { color: var(--white); }
+      .popup-box h1 {
+        font-family: 'Amiri', serif;
+        font-size: 42px;
+        color: var(--gold);
+        text-shadow: 0 0 20px rgba(255,215,0,0.7);
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+      .popup-box .subtitle {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        opacity: 0.9;
+        line-height: 1.8;
+      }
+      .popup-box .stars-row {
+        font-size: 22px;
+        letter-spacing: 8px;
+        margin-bottom: 22px;
+        animation: twinkle 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes twinkle { from { opacity:0.6; } to { opacity:1; } }
 
-    /* ZIGZAG */
-    .zigzag {
-      height: 30px;
-      background:
-        linear-gradient(135deg, var(--gold) 25%, transparent 25%) -20px 0,
-        linear-gradient(225deg, var(--gold) 25%, transparent 25%) -20px 0,
-        linear-gradient(315deg, var(--gold) 25%, transparent 25%),
-        linear-gradient(45deg,  var(--gold) 25%, transparent 25%);
-      background-size: 40px 30px;
-      background-color: var(--white);
-      opacity: 0.3;
-    }
+      .popup-close {
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        color: #1a0a00;
+        border: none;
+        padding: 12px 36px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-family: 'Cairo', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 20px rgba(255,215,0,0.5);
+      }
+      .popup-close:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 30px rgba(255,215,0,0.8);
+      }
 
-    /* BUTTONS */
-    .contant {
-      background: linear-gradient(180deg, var(--green-dark) 0%, var(--green) 100%);
-      padding: 50px 20px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    .contant::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M50 5L53 30H80L58 46L66 72L50 57L34 72L42 46L20 30H47Z' fill='none' stroke='%23C9A84C' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
-      background-size: 100px 100px;
-    }
-    .contant .container { width: 90%; max-width: 620px; margin: auto; position: relative; }
-    .contant .col { margin-bottom: 18px; }
-    .contant .col a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      height: 68px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-family: 'Amiri', serif;
-      font-size: clamp(18px, 3vw, 26px);
-      color: var(--green-dark);
-      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      font-weight: 700;
-      position: relative;
-      overflow: hidden;
-    }
-    .contant .col a::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -60%;
-      width: 40%; height: 200%;
-      background: rgba(255,255,255,0.25);
-      transform: skewX(-20deg);
-      transition: left 0.5s ease;
-    }
-    .contant .col a:hover::after { left: 120%; }
-    .contant .col a:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.35);
-    }
-    .contant .col a i { font-size: 22px; }
+      .popup-lanterns {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+      }
+      .lantern-mini {
+        font-size: 36px;
+        animation: lanternSwing 3s ease-in-out infinite;
+      }
+      .lantern-mini:nth-child(2) { animation-delay: 0.5s; }
+      .lantern-mini:nth-child(3) { animation-delay: 1s; }
+      @keyframes lanternSwing {
+        0%,100% { transform: rotate(-15deg); }
+        50%      { transform: rotate(15deg); }
+      }
 
-    /* ABOUT */
-    .about {
-      background: var(--cream);
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    .about::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle at top right, rgba(201,168,76,0.12), transparent 70%);
-    }
-    .about h1 {
-      font-family: 'Amiri', serif;
-      font-size: clamp(34px, 6vw, 62px);
-      color: var(--green-dark);
-      text-align: center;
-      margin-bottom: 6px;
-    }
-    .about h1 em { font-style: normal; color: var(--red); }
-    .about .sub {
-      text-align: center;
-      color: #8B6914;
-      font-family: 'Amiri', serif;
-      font-size: clamp(15px, 2vw, 20px);
-      margin-bottom: 44px;
-      letter-spacing: 3px;
-    }
-    .about .container {
-      width: 90%; max-width: 920px; margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .about .log img {
-      width: 100%;
-      border-radius: 24px;
-      border: 3px solid var(--gold);
-      box-shadow: 12px 12px 0 var(--gold), 0 20px 50px rgba(0,0,0,0.1);
-    }
-    .about .textAabout p {
-      font-size: clamp(14px, 1.8vw, 17px);
-      font-weight: 500;
-      line-height: 2.3;
-      color: #333;
-      text-align: right;
-      border-right: 4px solid var(--gold);
-      padding-right: 20px;
-    }
+      /* ===================== FIREWORKS ===================== */
+      #fireworks-canvas {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9998;
+      }
 
-    /* FOOTER */
-    .footer {
-      background: var(--green-dark);
-      border-top: 3px solid var(--gold);
-      text-align: center;
-      padding: 28px 20px;
-      color: var(--gold-light);
-      font-family: 'Amiri', serif;
-      font-size: clamp(16px, 2vw, 22px);
-      letter-spacing: 2px;
-    }
+      /* ===================== EID BANNER TOP ===================== */
+      .eid-banner-top {
+        background: linear-gradient(135deg, #1a0a00 0%, #3d1000 40%, #1a0a00 100%);
+        border-bottom: 3px solid var(--gold);
+        text-align: center;
+        padding: 8px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .eid-banner-top::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 20px,
+          rgba(255,215,0,0.04) 20px,
+          rgba(255,215,0,0.04) 40px
+        );
+      }
+      .eid-marquee {
+        color: var(--gold);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        display: inline-block;
+        animation: marqueeMove 12s linear infinite;
+      }
+      @keyframes marqueeMove {
+        from { transform: translateX(100vw); }
+        to   { transform: translateX(-100%); }
+      }
 
-    @media (max-width: 700px) {
-      .about .container { grid-template-columns: 1fr; }
-      .about .log { display: none; }
-      .eid-banner::before, .eid-banner::after { display: none; }
-    }
-  </style>
-</head>
-<body>
+      /* ===================== HANGING DECORATIONS ===================== */
+      .hanging-decor {
+        background: linear-gradient(135deg, #1a0a00, #2d0d00);
+        border-bottom: 2px solid rgba(255,215,0,0.3);
+        overflow: hidden;
+        position: relative;
+        height: 70px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .hanging-decor .rope {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 0 20px;
+      }
+      .hang-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hang-item .rope-line {
+        width: 2px;
+        height: 15px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+      }
+      .hang-item .ornament {
+        font-size: 28px;
+        animation: swingHang 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+      }
+      .hang-item:nth-child(2n) .ornament { animation-delay: 0.4s; }
+      .hang-item:nth-child(3n) .ornament { animation-delay: 0.8s; }
+      .hang-item:nth-child(4n) .ornament { animation-delay: 1.2s; }
+      .hang-item:nth-child(5n) .ornament { animation-delay: 1.6s; }
+      @keyframes swingHang {
+        0%,100% { transform: rotate(-12deg); }
+        50%      { transform: rotate(12deg); }
+      }
 
-<canvas id="confetti-canvas"></canvas>
+      /* ===================== HEADER ===================== */
+      .header {
+        background: linear-gradient(135deg, #ffffff 0%, #fff8e7 100%);
+        border-bottom: 4px solid var(--gold);
+        box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .header::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--main-color), var(--gold), var(--main-color), var(--gold), var(--main-color));
+        background-size: 200% 100%;
+        animation: rainbowLine 3s linear infinite;
+      }
+      @keyframes rainbowLine {
+        0%   { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+      }
 
-<div class="top-ribbon">
-  🌟&nbsp;&nbsp; كل عام وأنتم بخير &nbsp;&nbsp;🌟&nbsp;&nbsp; عيد مبارك سعيد &nbsp;&nbsp;🌟&nbsp;&nbsp; تقبل الله منا ومنكم &nbsp;&nbsp;🌟
-</div>
+      .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        max-width: 90%;
+        margin: auto;
+      }
 
-<div class="header">
-  <div class="container">
-    <div class="logo"><img src="image/logo.jpg" alt="ليالي العرب" /></div>
-    <div class="name">
-      <h1><span>ليالي</span> العرب</h1>
-      <p class="tagline">أصالة اليمن على موائد مصر</p>
+      .header-logo-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .header-logo-wrap .logo-ring {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        background: linear-gradient(135deg, var(--gold), var(--main-color)) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        animation: spinRing 6s linear infinite;
+      }
+      @keyframes spinRing { to { transform: rotate(360deg); } }
+
+      .header img {
+        width: 55px;
+        border-radius: 50%;
+        border: 3px solid var(--gold);
+        box-shadow: 0 0 15px rgba(255,215,0,0.5);
+        animation: logoBounce 2s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+      }
+      @keyframes logoBounce {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+      }
+
+      .header .name {
+        text-align: center;
+        flex: 1;
+      }
+      .header .name h1 {
+        font-family: 'Amiri', serif;
+        font-size: 32px;
+        color: var(--main-color);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      }
+      .header .name h1 span {
+        color: var(--secondary-color);
+      }
+      .header .name .eid-tag {
+        font-size: 13px;
+        color: var(--gold-dark);
+        font-weight: 700;
+        background: linear-gradient(135deg, #fff3a3, #ffe070);
+        padding: 2px 12px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 2px;
+        animation: tagPulse 2s ease-in-out infinite;
+      }
+      @keyframes tagPulse {
+        0%,100% { transform: scale(1); }
+        50%      { transform: scale(1.05); }
+      }
+
+      .header .eid-stars-header {
+        font-size: 26px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        animation: starSpin 4s linear infinite;
+      }
+      @keyframes starSpin {
+        0%,100% { transform: rotate(0deg) scale(1); }
+        25%      { transform: rotate(5deg) scale(1.1); }
+        75%      { transform: rotate(-5deg) scale(1.1); }
+      }
+
+      @media (max-width: 768px) {
+        .header .name h1 { font-size: 18px; }
+        .header img { width: 40px; }
+        .header .eid-stars-header { font-size: 18px; }
+      }
+
+      /* ===================== EID HERO BANNER ===================== */
+      .eid-hero {
+        background: linear-gradient(160deg, #0d0500 0%, #2d0d00 30%, #1a0a00 60%, #000 100%);
+        padding: 50px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .eid-hero .stars-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .star-dot {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        animation: starTwinkle var(--dur, 3s) ease-in-out infinite;
+        opacity: var(--op, 0.8);
+      }
+      @keyframes starTwinkle {
+        0%,100% { opacity: var(--op, 0.8); transform: scale(1); }
+        50%      { opacity: 0.1; transform: scale(0.5); }
+      }
+
+      .eid-hero .crescent {
+        position: absolute;
+        right: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 100px;
+        filter: drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 40px orange);
+        animation: crescentFloat 4s ease-in-out infinite;
+      }
+      @keyframes crescentFloat {
+        0%,100% { transform: translateY(-50%) rotate(-10deg); }
+        50%      { transform: translateY(calc(-50% - 15px)) rotate(10deg); }
+      }
+      @media (max-width: 600px) {
+        .eid-hero .crescent { font-size: 50px; right: 3%; }
+      }
+
+      .eid-hero .lantern-left {
+        position: absolute;
+        left: 5%;
+        top: 10%;
+        font-size: 60px;
+        animation: lanternSwing 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 15px rgba(255,150,0,0.8));
+      }
+      .eid-hero .lantern-right {
+        position: absolute;
+        left: 12%;
+        top: 5%;
+        font-size: 40px;
+        animation: lanternSwing 3.5s ease-in-out infinite reverse;
+        filter: drop-shadow(0 0 12px rgba(255,100,0,0.7));
+      }
+
+      .eid-hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .eid-hero h1 {
+        font-family: 'Amiri', serif;
+        font-size: clamp(36px, 6vw, 72px);
+        color: var(--gold);
+        text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 40px rgba(255,165,0,0.5);
+        line-height: 1.2;
+        margin-bottom: 12px;
+        animation: heroTextGlow 3s ease-in-out infinite alternate;
+      }
+      @keyframes heroTextGlow {
+        from { text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 40px rgba(255,165,0,0.5); }
+        to   { text-shadow: 0 0 40px rgba(255,215,0,1),   0 0 80px rgba(255,165,0,0.8), 0 0 120px rgba(255,100,0,0.4); }
+      }
+      .eid-hero h2 {
+        font-family: 'Amiri', serif;
+        font-size: clamp(18px, 3vw, 28px);
+        color: #fff;
+        opacity: 0.9;
+        margin-bottom: 20px;
+      }
+      .eid-hero .offer-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--main-color), #ff5500);
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        border: 2px solid var(--gold);
+        box-shadow: 0 0 20px rgba(255,215,0,0.4);
+        animation: offerPulse 2s ease-in-out infinite;
+        margin-top: 10px;
+      }
+      @keyframes offerPulse {
+        0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,215,0,0.4); }
+        50%      { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,215,0,0.8); }
+      }
+
+      /* geometric ornament lines */
+      .eid-hero .ornament-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 12px 0;
+      }
+      .eid-hero .ornament-line .line {
+        flex: 1;
+        max-width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      }
+      .eid-hero .ornament-line .diamond { font-size: 18px; color: var(--gold); }
+
+      /* ===================== PROFILE ===================== */
+      .profile {
+        background: linear-gradient(160deg, var(--main-color) 0%, #a52000 100%);
+        text-align: center;
+        color: #ffffff;
+        padding: 40px 20px;
+        direction: rtl;
+        position: relative;
+        overflow: hidden;
+      }
+      .profile::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .profile .image {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+      .profile .image img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 5px solid var(--gold);
+        box-shadow: 0 0 30px rgba(255,215,0,0.5), 0 0 0 10px rgba(255,215,0,0.15);
+        object-fit: cover;
+      }
+      .profile .image .eid-crown {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        animation: crownBounce 2s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px var(--gold));
+      }
+      @keyframes crownBounce {
+        0%,100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+        50%      { transform: translateX(-50%) translateY(-6px) rotate(5deg); }
+      }
+      .profile .image::after {
+        content: '✨';
+        position: absolute;
+        right: 0; bottom: 5px;
+        font-size: 24px;
+        animation: sparklePos 2s ease-in-out infinite;
+      }
+      @keyframes sparklePos {
+        0%,100% { transform: scale(1) rotate(0deg); }
+        50%      { transform: scale(1.3) rotate(30deg); }
+      }
+
+      .profile .text .main-name {
+        font-family: 'Amiri', serif;
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--gold);
+        text-shadow: 0 0 15px rgba(255,215,0,0.5);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .profile .text .tagline {
+        font-size: 16px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 5px;
+      }
+      .profile .eid-message-strip {
+        background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05));
+        border: 1px solid rgba(255,215,0,0.4);
+        border-radius: 12px;
+        padding: 10px 20px;
+        margin: 15px auto;
+        max-width: 400px;
+        font-size: 14px;
+        color: var(--gold-light);
+        line-height: 1.8;
+      }
+
+      .profile .icon {
+        padding-top: 20px;
+        word-spacing: 15px;
+        position: relative;
+        z-index: 1;
+      }
+      .profile .icon a i {
+        font-size: 28px;
+        color: #fff;
+        transition: all 0.3s;
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+      }
+      .profile .icon a:hover i {
+        color: var(--gold);
+        font-size: 38px;
+        filter: drop-shadow(0 0 10px var(--gold));
+      }
+
+      /* ===================== EID COUNTDOWN ===================== */
+      .eid-wishes {
+        background: linear-gradient(135deg, #1a0a00, #2d0d00, #1a0a00);
+        border-top: 3px solid var(--gold);
+        border-bottom: 3px solid var(--gold);
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .eid-wishes::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(255,215,0,0.06) 0%, transparent 60%),
+                    radial-gradient(circle at 80% 50%, rgba(216,50,0,0.1)   0%, transparent 60%);
+      }
+      .eid-wishes h2 {
+        font-family: 'Amiri', serif;
+        font-size: clamp(24px, 4vw, 40px);
+        color: var(--gold);
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .wish-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+        position: relative;
+        z-index: 1;
+      }
+      .wish-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,215,0,0.35);
+        border-radius: 16px;
+        padding: 24px 20px;
+        width: 200px;
+        text-align: center;
+        transition: all 0.4s;
+        backdrop-filter: blur(5px);
+      }
+      .wish-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--gold);
+        box-shadow: 0 8px 30px rgba(255,215,0,0.25);
+      }
+      .wish-card .wish-icon { font-size: 40px; margin-bottom: 10px; display: block; }
+      .wish-card h3 { color: var(--gold); font-size: 18px; margin-bottom: 6px; }
+      .wish-card p  { color: rgba(255,255,255,0.75); font-size: 13px; line-height: 1.6; }
+
+      /* ===================== CONTENT / LINKS ===================== */
+      .contant {
+        padding: 50px 20px;
+        text-align: center;
+        direction: rtl;
+      }
+      .contant .container {
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contant .col {
+        height: 58px;
+        border: 2px solid rgba(255,255,255,0.6);
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(5px);
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .contant .col::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 0%, rgba(255,215,0,0.08) 100%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .contant .col:hover::before { opacity: 1; }
+      .contant .col:hover {
+        border-color: var(--gold);
+        box-shadow: 0 0 20px rgba(255,215,0,0.3);
+        transform: translateX(-5px);
+      }
+      .contant a {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        transition: color 0.3s;
+      }
+      .contant .col:hover a { color: var(--gold); }
+      .contant a i { font-size: 20px; }
+      .contant .eid-btn-extra {
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        border-color: var(--gold);
+      }
+      .contant .eid-btn-extra a { color: #1a0a00 !important; font-weight: 900; }
+
+      /* ===================== ABOUT ===================== */
+      .about {
+        background: linear-gradient(135deg, #fffdf5, #fff8e7);
+        text-align: center;
+        padding: 60px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .about::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d83200' fill-opacity='0.04'%3E%3Cpath d='M40 0C17.9 0 0 17.9 0 40s17.9 40 40 40 40-17.9 40-40S62.1 0 40 0zm0 70C23.4 70 10 56.6 10 40S23.4 10 40 10s30 13.4 30 30-13.4 30-30 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .about .eid-about-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--main-color), #ff4500);
+        color: #fff;
+        padding: 8px 24px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 15px rgba(216,50,0,0.4);
+      }
+      .about h1 {
+        font-family: 'Amiri', serif;
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 900;
+        color: var(--main-color);
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+      }
+      .about h1 span { color: var(--gold-dark); }
+      .about .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: 16px auto 40px;
+        max-width: 300px;
+      }
+      .about .divider .div-line {
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--main-color), transparent);
+      }
+      .about .divider .div-icon { font-size: 20px; color: var(--main-color); }
+
+      .about .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .about .log img {
+        width: 100%;
+        border-radius: 16px;
+        border: 4px solid var(--main-color);
+        box-shadow: 8px 8px 0 var(--gold-dark), 0 0 30px rgba(216,50,0,0.2);
+        transition: transform 0.3s;
+      }
+      .about .log img:hover { transform: scale(1.02) rotate(-1deg); }
+      .about .textAabout {
+        font-size: 16px;
+        font-weight: 600;
+        direction: rtl;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        line-height: 2.2;
+        text-align: start;
+        color: #2d1a00;
+        background: rgba(255,255,255,0.8);
+        padding: 24px;
+        border-radius: 16px;
+        border-right: 5px solid var(--main-color);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
+      .about .textAabout p { width: 100%; }
+
+      /* ===================== EID FOOTER ===================== */
+      .eid-footer {
+        background: linear-gradient(135deg, #0d0500, #1a0a00);
+        border-top: 3px solid var(--gold);
+        padding: 40px 20px;
+        text-align: center;
+        color: rgba(255,255,255,0.7);
+        font-size: 14px;
+      }
+      .eid-footer .footer-logo { font-size: 50px; margin-bottom: 10px; }
+      .eid-footer .footer-name {
+        font-family: 'Amiri', serif;
+        font-size: 28px;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .eid-footer .footer-wish {
+        font-size: 16px;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 20px;
+      }
+      .eid-footer .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .eid-footer .footer-social a i {
+        font-size: 22px;
+        color: rgba(255,255,255,0.5);
+        transition: all 0.3s;
+      }
+      .eid-footer .footer-social a:hover i {
+        color: var(--gold);
+        font-size: 28px;
+        filter: drop-shadow(0 0 8px var(--gold));
+      }
+      .eid-footer .copyright {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,215,0,0.2);
+        font-size: 12px;
+      }
+
+      /* ===================== SCROLLBAR ===================== */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #1a0a00; }
+      ::-webkit-scrollbar-thumb { background: linear-gradient(var(--gold), var(--main-color)); border-radius: 4px; }
+
+      /* ===================== BACK TO TOP ===================== */
+      #backTop {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 50px; height: 50px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        color: #1a0a00;
+        border: none;
+        border-radius: 50%;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255,215,0,0.5);
+        z-index: 999;
+        display: none;
+        animation: backTopPulse 2s infinite;
+        transition: all 0.3s;
+      }
+      #backTop:hover { transform: scale(1.15); }
+      @keyframes backTopPulse {
+        0%,100% { box-shadow: 0 4px 20px rgba(255,215,0,0.5); }
+        50%      { box-shadow: 0 4px 40px rgba(255,215,0,0.9); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ===== FIREWORKS CANVAS ===== -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- ===== EID POPUP ===== -->
+    <div id="eid-popup">
+      <div class="popup-box">
+        <div class="popup-lanterns">
+          <span class="lantern-mini">🏮</span>
+          <span class="lantern-mini">🌙</span>
+          <span class="lantern-mini">🏮</span>
+        </div>
+        <span class="moon-icon">🌙</span>
+        <h1>عيد مبارك</h1>
+        <div class="stars-row">⭐ ✨ 🌟 ✨ ⭐</div>
+        <p class="subtitle">
+          يهنئكم مطعم <strong>ليالي العرب</strong> بمناسبة العيد المبارك<br/>
+          تقبّل الله منا ومنكم صالح الأعمال 🤲
+        </p>
+        <button class="popup-close" onclick="closePopup()">🎉 شكراً — تفضّل!</button>
+      </div>
     </div>
-    <div style="width:85px"></div>
-  </div>
-</div>
 
-<div class="eid-banner">
-  <h2>
-    <span class="starburst">✦</span>
-    عيد مبارك
-    <span class="starburst" style="animation-direction:reverse">✦</span>
-  </h2>
-  <p>من مطعم ليالي العرب — نهنئكم بمناسبة عيد الفطر المبارك</p>
-</div>
-
-<div class="profile">
-  <div class="image">
-    <svg class="star-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-      <path d="M100 4 L108 36 L138 20 L122 50 L154 58 L130 80 L150 106 L118 106 L114 140 L100 118 L86 140 L82 106 L50 106 L70 80 L46 58 L78 50 L62 20 L92 36 Z"
-        fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
-    </svg>
-    <img src="image/caram.jpg" alt="" />
-  </div>
-  <div class="text">
-    <span>مطعم ليالي العرب</span>
-    <p>طعم رهيب بسعر خطير 🔥</p>
-  </div>
-  <div class="icon">
-    <a href="https://www.tiktok.com/@layaliarab?_t=ZS-8v9fAPbIM0S&_r=1"><i class="fa-brands fa-tiktok"></i></a>
-    <a href="https://www.youtube.com/@layalliaarab"><i class="fa-brands fa-youtube"></i></a>
-    <a href="https://www.facebook.com/Lialyelarab"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://www.instagram.com/layalliaarab6/"><i class="fa-brands fa-instagram"></i></a>
-    <a href="tel:201102202068"><i class="fa-solid fa-phone"></i></a>
-    <a href="https://api.whatsapp.com/send?phone=201102202068"><i class="fab fa-whatsapp"></i></a>
-  </div>
-</div>
-
-<div class="zigzag"></div>
-
-<div class="contant">
-  <div class="container">
-    <div class="col">
-      <a href="https://www.google.com/maps/place/مطعم+ليالي+العرب">
-        <i class="fa-solid fa-location-dot"></i>
-        الموقع على الخريطة
-      </a>
+    <!-- ===== EID TOP BANNER ===== -->
+    <div class="eid-banner-top">
+      <span class="eid-marquee">🌙 عيد مبارك وعيد سعيد 🌟 كل عام وأنتم بخير من مطعم ليالي العرب 🏮 تقبّل الله منا ومنكم صالح الأعمال 🌙 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🌙 عيد مبارك وعيد سعيد 🌟 كل عام وأنتم بخير من مطعم ليالي العرب 🏮</span>
     </div>
-    <div class="col">
-      <a href="menu/menu.html">
-        <i class="fa-solid fa-utensils"></i>
-        قائمة الطعام
-      </a>
-    </div>
-  </div>
-</div>
 
-<div class="about">
-  <h1>من <em>نحن</em></h1>
-  <p class="sub">✦ &nbsp; تأسسنا عام 2022 &nbsp; ✦</p>
-  <div class="container">
-    <div class="log">
-      <img src="image/logo.jpg" alt="ليالي العرب" />
+    <!-- ===== HANGING DECORATIONS ===== -->
+    <div class="hanging-decor">
+      <div class="rope">
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🏮</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">⭐</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🌙</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🏮</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">✨</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🌟</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🏮</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">⭐</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🌙</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🏮</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">✨</span></div>
+        <div class="hang-item"><div class="rope-line"></div><span class="ornament">🌟</span></div>
+      </div>
     </div>
-    <div class="textAabout">
-      <p>
-        مرحبًا بكم في مطعم ليالي العرب، حيث الأصالة اليمنية والكرم الخليجي يجتمعان على مائدة واحدة!
-        <br><br>
-        نحن نفخر بتقديم أشهى المأكولات التقليدية — من المندي الشهي، والمظبي الأصيل، والمدفون الغني، إلى أطباقنا الخاصة مثل صينية ليالي العرب والحنيذ والمشاوي المتنوعة.
-        <br><br>
-        نحرص على استخدام أجود المكونات الطازجة، ونعتمد على أمهر الطهاة لتقديم أطباق مطهوة بعناية وشغف.
-        <br><br>
-        انضموا إلينا لتجربة لا مثيل لها، حيث الطعم الأصيل يلتقي بالضيافة العربية. 🌟
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+      <div class="container">
+        <div class="header-logo-wrap">
+          <div class="logo-ring"></div>
+          <img src="image/logo.jpg" alt="ليالي العرب" />
+        </div>
+        <div class="name">
+          <h1><span>ليالي</span> العرب</h1>
+          <span class="eid-tag">🌙 عيد مبارك 🌟</span>
+        </div>
+        <div class="eid-stars-header">🌙⭐🌟</div>
+      </div>
+    </div>
+
+    <!-- ===== EID HERO ===== -->
+    <div class="eid-hero">
+      <div class="stars-bg" id="starsBg"></div>
+      <div class="lantern-left">🏮</div>
+      <div class="lantern-right">🕌</div>
+      <div class="crescent">🌙</div>
+      <div class="eid-hero-content">
+        <div class="ornament-line">
+          <div class="line"></div>
+          <span class="diamond">✦</span>
+          <div class="line"></div>
+        </div>
+        <h1>عيد مبارك</h1>
+        <h2>كل عام وأنتم بألف خير 🤍</h2>
+        <div class="ornament-line">
+          <div class="line"></div>
+          <span class="diamond">🌟</span>
+          <div class="line"></div>
+        </div>
+        <p style="color:rgba(255,255,255,0.75); font-size:15px; margin:10px 0 16px;">
+          بمناسبة العيد المبارك — نتمنى لكم عيداً مليئاً بالفرح والسعادة
+        </p>
+        <span class="offer-badge">🎉 احتفلوا معنا بأشهى المأكولات اليمنية</span>
+      </div>
+    </div>
+
+    <!-- ===== PROFILE ===== -->
+    <div class="profile">
+      <div class="container">
+        <div class="image">
+          <span class="eid-crown">👑</span>
+          <img src="image/caram.jpg" alt="مطعم ليالي العرب" />
+        </div>
+        <div class="text">
+          <span class="main-name">🍖 مطعم ليالي العرب 🍖</span>
+          <p class="tagline">طعم رهيب بسعر خطير 🔥</p>
+        </div>
+        <div class="eid-message-strip">
+          🌙 بمناسبة العيد المبارك، نقدم لكم أشهى الوجبات اليمنية الأصيلة<br/>
+          تقبّل الله منا ومنكم ✨
+        </div>
+        <div class="icon">
+          <a href="https://www.tiktok.com/@layaliarab?_t=ZS-8v9fAPbIM0S&_r=1"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@layalliaarab"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/Lialyelarab"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/layalliaarab6/"><i class="fa-brands fa-instagram"></i></a>
+          <a href="tel:201102202068"><i class="fa-solid fa-phone"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=201102202068"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== EID WISHES ===== -->
+    <div class="eid-wishes">
+      <h2>🌟 في هذا العيد المبارك 🌟</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:15px; margin-top:8px;">
+        نتشرف بخدمتكم ونتمنى أن تكون وجباتنا جزءاً من فرحة عيدكم
       </p>
+      <div class="wish-cards">
+        <div class="wish-card">
+          <span class="wish-icon">🌙</span>
+          <h3>عيد مبارك</h3>
+          <p>تقبّل الله منا ومنكم صالح الأعمال</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-icon">🍖</span>
+          <h3>أشهى الوجبات</h3>
+          <p>مندي · مظبي · مدفون · صينية ليالي العرب</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-icon">👨‍👩‍👧‍👦</span>
+          <h3>للعائلة</h3>
+          <p>وليمة العيد المثالية مع أحبائكم</p>
+        </div>
+        <div class="wish-card">
+          <span class="wish-icon">🏮</span>
+          <h3>أجواء العيد</h3>
+          <p>استمتعوا بأجواء احتفالية مميزة</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="footer">
-  🌟 &nbsp; كل عام وأنتم بخير — مطعم ليالي العرب &nbsp; 🌟
-</div>
+    <!-- ===== LINKS ===== -->
+    <div class="contant">
+      <div class="container">
+        <div class="col">
+          <a href="https://www.google.com/maps/place/%D9%85%D8%B7%D8%B9%D9%85+%D9%84%D9%8A%D8%A7%D9%84%D9%8A+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8">
+            <i class="fa-solid fa-location-dot"></i>
+            موقعنا على الخريطة
+          </a>
+        </div>
+        <div class="col">
+          <a href="menu/menu.html">
+            <i class="fa-solid fa-utensils"></i>
+            قائمة الطعام
+          </a>
+        </div>
+        <div class="col eid-btn-extra">
+          <a href="https://api.whatsapp.com/send?phone=201102202068">
+            <i class="fab fa-whatsapp"></i>
+            احجز وليمة العيد الآن 🎉
+          </a>
+        </div>
+      </div>
+    </div>
 
-<script>
-const canvas = document.getElementById('confetti-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+    <!-- ===== ABOUT ===== -->
+    <div class="about">
+      <div class="eid-about-badge">🌙 من نحن</div>
+      <h1>عن مطعم <span>ليالي العرب</span></h1>
+      <div class="divider">
+        <div class="div-line"></div>
+        <span class="div-icon">🍖</span>
+        <div class="div-line"></div>
+      </div>
+      <div class="container">
+        <div class="log">
+          <img src="image/logo.jpg" alt="شعار مطعم ليالي العرب" />
+        </div>
+        <div class="textAabout">
+          <p>
+            تأسس المطعم عام 2022 ليقدم اشهى المأكولات اليمنية في مصر - القاهرة.
+            <br/>
+            مرحبًا بكم في مطعم ليالي العرب، حيث الأصالة اليمنية والكرم الخليجي يجتمعان على مائدة واحدة!
+            <br/>
+            نحن نفخر بتقديم أشهى المأكولات التقليدية التي تحكي قصصًا من عبق التاريخ وثرائنا الثقافي.
+            <br/>
+            من المندي الشهي، والمظبي الأصيل، والمدفون الغني، إلى أطباقنا الخاصة مثل صينية ليالي العرب، الحنيذ، والمشاوي المتنوعة، نعدكم بتجربة ترضي جميع الأذواق.
+            <br/>
+            نحرص على استخدام أجود المكونات الطازجة، ونعتمد على أمهر الطهاة لتقديم أطباق مطهوة بعناية وشغف.
+          </p>
+        </div>
+      </div>
+    </div>
 
-const colors = ['#C9A84C','#F5D878','#1B6B3A','#d83200','#ffffff','#2A8C4F'];
-const pieces = Array.from({length: 130}, () => ({
-  x: Math.random() * window.innerWidth,
-  y: Math.random() * window.innerHeight - window.innerHeight,
-  w: Math.random() * 10 + 5,
-  h: Math.random() * 6 + 3,
-  color: colors[Math.floor(Math.random() * colors.length)],
-  rotation: Math.random() * 360,
-  speed: Math.random() * 2 + 1,
-  rotSpeed: (Math.random() - 0.5) * 4,
-  sway: Math.random() * 2 - 1,
-  swayFreq: Math.random() * 0.03 + 0.01,
-  alpha: 1,
-  tick: Math.random() * 100
-}));
+    <!-- ===== EID FOOTER ===== -->
+    <div class="eid-footer">
+      <div class="footer-logo">🌙</div>
+      <div class="footer-name">ليالي العرب</div>
+      <div class="footer-wish">عيد مبارك وعيد سعيد 🌟 كل عام وأنتم بخير</div>
+      <div class="footer-social">
+        <a href="https://www.tiktok.com/@layaliarab"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@layalliaarab"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.facebook.com/Lialyelarab"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/layalliaarab6/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="tel:201102202068"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=201102202068"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="copyright">
+        © 2025 مطعم ليالي العرب · جميع الحقوق محفوظة 🌙
+      </div>
+    </div>
 
-const startTime = Date.now();
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
 
-function drawConfetti() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const elapsed = Date.now() - startTime;
+    <script>
+      // ===== POPUP =====
+      function closePopup() {
+        const p = document.getElementById('eid-popup');
+        p.style.animation = 'fadeInPop 0.4s ease reverse';
+        setTimeout(() => p.remove(), 400);
+      }
 
-  pieces.forEach(p => {
-    p.tick++;
-    p.y += p.speed;
-    p.rotation += p.rotSpeed;
-    p.x += Math.sin(p.tick * p.swayFreq) * p.sway;
-    if (elapsed > 5000) p.alpha = Math.max(0, 1 - (elapsed - 5000) / 2000);
+      // ===== STARS BACKGROUND =====
+      const bg = document.getElementById('starsBg');
+      for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        s.className = 'star-dot';
+        const size = Math.random() * 3 + 1;
+        s.style.cssText = `
+          width:${size}px; height:${size}px;
+          left:${Math.random()*100}%; top:${Math.random()*100}%;
+          --dur:${2 + Math.random()*4}s;
+          --op:${0.4 + Math.random()*0.6};
+          animation-delay:${Math.random()*4}s;
+        `;
+        bg.appendChild(s);
+      }
 
-    ctx.save();
-    ctx.globalAlpha = p.alpha;
-    ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
-    ctx.rotate(p.rotation * Math.PI / 180);
-    ctx.fillStyle = p.color;
-    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-    ctx.restore();
+      // ===== FIREWORKS =====
+      const canvas = document.getElementById('fireworks-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
 
-    if (p.y > canvas.height + 20) {
-      p.y = -20;
-      p.x = Math.random() * canvas.width;
-    }
-  });
+      const particles = [];
+      const colors = ['#ffd700','#ff6b00','#fff','#ff4500','#fffacd','#ffa500'];
 
-  if (elapsed < 7000) requestAnimationFrame(drawConfetti);
-  else ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+      function createFirework(x, y) {
+        for (let i = 0; i < 60; i++) {
+          const angle = (Math.PI * 2 / 60) * i;
+          const speed = 2 + Math.random() * 4;
+          particles.push({
+            x, y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 1,
+            decay: 0.012 + Math.random() * 0.015,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            size: 2 + Math.random() * 3,
+            trail: []
+          });
+        }
+      }
 
-drawConfetti();
-</script>
-</body>
+      let fwTimer = 0;
+      function animateFireworks(ts) {
+        requestAnimationFrame(animateFireworks);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        fwTimer++;
+        if (fwTimer % 120 === 0) {
+          const x = 80 + Math.random() * (canvas.width - 160);
+          const y = 60 + Math.random() * (canvas.height * 0.4);
+          createFirework(x, y);
+        }
+        particles.forEach((p, i) => {
+          p.trail.push({x: p.x, y: p.y});
+          if (p.trail.length > 5) p.trail.shift();
+          p.x  += p.vx;
+          p.y  += p.vy;
+          p.vy += 0.05;
+          p.vx *= 0.99;
+          p.life -= p.decay;
+          ctx.globalAlpha = p.life;
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+          if (p.life <= 0) particles.splice(i, 1);
+        });
+        ctx.globalAlpha = 1;
+      }
+      requestAnimationFrame(animateFireworks);
+
+      // ===== BACK TO TOP =====
+      const btn = document.getElementById('backTop');
+      window.addEventListener('scroll', () => {
+        btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        btn.style.alignItems = 'center';
+        btn.style.justifyContent = 'center';
+      });
+    </script>
+  </body>
 </html>
